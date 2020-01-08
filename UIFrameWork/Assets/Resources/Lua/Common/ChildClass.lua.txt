@@ -1,0 +1,16 @@
+
+local child = class("ChildClass", BaseClass) 
+
+function child:ctor(data)
+    -- body
+    self.a = data
+end
+
+function child:PrintData()
+    print( " -------data")
+    print(self.a)
+    self:PrintBase()
+    print(self.b)
+end 
+
+return child

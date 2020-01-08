@@ -1,0 +1,8 @@
+require("Common/class")
+
+BaseClass = require("Common/BaseClass")
+
+local util = require 'xlua.util'
+local childClass = require("Common/ChildClass") 
+local child = childClass.new(100)
+child:PrintData()
