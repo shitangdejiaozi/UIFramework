@@ -8,6 +8,7 @@ public class DemoTest : MonoBehaviour {
 	void Start () {
         AddLuaLoader();
         luaEnv.DoString("require 'Common/main'");
+        UGUIManager.Instance.Open(UGUI_TYPE.UITest);
 	}
 	
 	// Update is called once per frame
