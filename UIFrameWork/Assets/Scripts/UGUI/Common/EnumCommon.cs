@@ -7,4 +7,7 @@ public enum UGUI_TYPE
     _BEGIN = 0,
 
     UITest =  _BEGIN + 1,
+    UITestTwo = _BEGIN + 2,
+    UITestThree = _BEGIN +3,
+    UIMain = _BEGIN + 4,
 }

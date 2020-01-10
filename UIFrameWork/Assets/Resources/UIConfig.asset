@@ -17,3 +17,13 @@ MonoBehaviour:
     PrefabName: UIPrefab/UITest
     UseLua: 0
     LuaName: 
+  - UIName: UITestTwo
+    ScriptName: UITestTwo
+    PrefabName: UIPrefab/UITestTwo
+    UseLua: 0
+    LuaName: 
+  - UIName: UIMain
+    ScriptName: UIMain
+    PrefabName: UIPrefab/UIMain
+    UseLua: 0
+    LuaName: 

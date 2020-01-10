@@ -25,4 +25,8 @@ public class UIBase3D : GameWindowBase, IWindowBase{
     {
         return true;
     }
+    public bool IsVisible()
+    {
+        return gameObject.activeSelf;
+    }
 }

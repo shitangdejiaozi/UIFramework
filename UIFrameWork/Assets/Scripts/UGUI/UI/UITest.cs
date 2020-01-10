@@ -9,9 +9,19 @@ public class UITest : UIBase2D {
     #region 控件绑定变量声明，自动生成请勿手改
     [ControlBinding]
     private Button m_ReturnBtn;
+    [ControlBinding]
+    private Button m_openBtn;
+    [ControlBinding]
+    private Button m_closeBtn;
 
     #endregion
 
+
+
+    public override UGUI_LAYER Getlayer()
+    {
+        return UGUI_LAYER.MENU;
+    }
 
     public override UGUI_TYPE GetUIType()
     {
@@ -23,6 +33,8 @@ public class UITest : UIBase2D {
         base.Initialize();
         Debug.LogError("Initialize");
         m_ReturnBtn.onClick.AddListener(ClickClose);
+        m_openBtn.onClick.AddListener(OpenWindow1);
+        m_closeBtn.onClick.AddListener(CloseWindow1);
     }
 
     public override void OnOpen()
@@ -46,5 +58,15 @@ public class UITest : UIBase2D {
     {
         Debug.LogError("ClickClose");
         UGUIManager.Instance.Close(GetUIType(),true);
+    }
+
+    public void OpenWindow1()
+    {
+        UGUIManager.Instance.Open(UGUI_TYPE.UITestTwo);
+    }
+
+    public void CloseWindow1()
+    {
+        UGUIManager.Instance.Close(UGUI_TYPE.UITestTwo, true);
     }
 }
