@@ -12,10 +12,17 @@ public class UGUIManager : SingletonDontDestroy<UGUIManager> {
     private Dictionary<UGUI_TYPE, IWindowBase> m_loadedWindow = new Dictionary<UGUI_TYPE, IWindowBase>(); //记录加载过的UI
     private string m_configPath = "Assets/Resources/UIConfig.asset";
 
+    private Stack<ParentUIStruct> m_ParentUI = new Stack<ParentUIStruct>();
     private GameObject m_UICameraGo;
     private Camera m_uiCamera;
     private UIRoot2D m_root2D;
     private GameObject EventSystem;
+
+    struct ParentUIStruct
+    {
+        public UGUI_TYPE ChildUI;
+        public UGUI_TYPE ParentUI;
+    }
 
     private void Awake()
     {
@@ -50,7 +57,7 @@ public class UGUIManager : SingletonDontDestroy<UGUIManager> {
         }
     }
 
-    public IWindowBase Open(UGUI_TYPE uiType)
+    public IWindowBase Open(UGUI_TYPE uiType, UGUI_TYPE parentUIType = UGUI_TYPE._BEGIN)
     {
         IWindowBase uiwindow; 
         m_loadedWindow.TryGetValue(uiType, out uiwindow);
@@ -79,6 +86,13 @@ public class UGUIManager : SingletonDontDestroy<UGUIManager> {
             }
         }
         HideMainCamera();
+        if(parentUIType != UGUI_TYPE._BEGIN)
+        {
+            ParentUIStruct parentUI = new ParentUIStruct();
+            parentUI.ParentUI = parentUIType;
+            parentUI.ChildUI = uiType;
+            m_ParentUI.Push(parentUI);
+        }
         return uiwindow;
     }
 
@@ -106,6 +120,16 @@ public class UGUIManager : SingletonDontDestroy<UGUIManager> {
         {
             if(!CheckMenuLayerVisiable()) //如果没有全屏 的系统了，就打开mainUI
                 SetMainUIActive(true);
+        }
+
+        if(m_ParentUI.Count > 0)
+        {
+            ParentUIStruct parentUI = m_ParentUI.Peek();
+            if(parentUI.ChildUI == uiType)
+            {
+                Open(parentUI.ParentUI); //就是一个固定返回界面，一种父子的关系，尽量少用
+                m_ParentUI.Pop();
+            }
         }
     }
 
@@ -155,6 +179,24 @@ public class UGUIManager : SingletonDontDestroy<UGUIManager> {
         windowObj.SetActive(false);
         m_loadedWindow.Add(uiType, uiwindow);
         return uiwindow;
+    }
+
+    public void ReleaseWindow(UGUI_TYPE uiType)
+    {
+        IWindowBase uiwindow = GetUI(uiType);
+        if (uiwindow == null)
+            return;
+        if (uiwindow.Is3D())
+        {
+
+        }
+        else
+        {
+            m_root2D.Release(uiwindow);
+        }
+        m_loadedWindow.Remove(uiType);
+
+
     }
 
     private UIData GetUIDataByUIType(UGUI_TYPE uiType)

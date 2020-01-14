@@ -13,7 +13,7 @@ public class DemoTest : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
+        TimerManager.Instance.UpdateTimer(Time.deltaTime);
 	}
 
     private void OnDestroy()

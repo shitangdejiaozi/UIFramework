@@ -30,6 +30,8 @@ public class UITestTwo : UIBase2D {
         base.Initialize();
         Debug.LogError("initaizelize");
         m_Btn1.onClick.AddListener(ClickClose);
+        m_Btn2.onClick.AddListener(OpenWindow);
+
     }
     public override void OnOpen()
     {
@@ -40,5 +42,10 @@ public class UITestTwo : UIBase2D {
     public void ClickClose()
     {
         CloseSelf();
+    }
+
+    public void OpenWindow()
+    {
+        UGUIManager.Instance.Open(UGUI_TYPE.UITestThree, UGUI_TYPE.UITestTwo);
     }
 }

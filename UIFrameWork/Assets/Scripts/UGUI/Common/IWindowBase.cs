@@ -18,8 +18,6 @@ public interface IWindowBase : IBindableUI{
 
     void Close();
 
-    void Release();
-
     bool Is3D();
 
     bool IsVisible();

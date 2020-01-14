@@ -57,12 +57,12 @@ public class UITest : UIBase2D {
     public void ClickClose()
     {
         Debug.LogError("ClickClose");
-        UGUIManager.Instance.Close(GetUIType(),true);
+        UGUIManager.Instance.Close(GetUIType());
     }
 
     public void OpenWindow1()
     {
-        UGUIManager.Instance.Open(UGUI_TYPE.UITestTwo);
+        UGUIManager.Instance.Open(UGUI_TYPE.UITestThree, UGUI_TYPE.UITestTwo);
     }
 
     public void CloseWindow1()

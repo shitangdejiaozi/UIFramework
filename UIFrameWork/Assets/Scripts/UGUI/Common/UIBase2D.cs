@@ -9,7 +9,8 @@ public abstract class UIBase2D : GameWindowBase, IWindowBase {
     protected UGUI_LAYER UILayer = UGUI_LAYER.ROOT;
     private bool m_autoRelease = true; //自动回收
     protected Transform UIRootTrans;
-
+    private uint m_timer = 0;
+    protected float m_releaseTime = 0.01f;
     public abstract UGUI_LAYER Getlayer(); //每个UI都要layer
 
     public void Open()
@@ -23,13 +24,10 @@ public abstract class UIBase2D : GameWindowBase, IWindowBase {
     public void Close()
     {
         gameObject.SetActive(false);
+        AddAutoReleaseTimer();
         OnClose();
     }
 
-    public void Release()
-    {
-        OnRelease();
-    }
 
     public bool Is3D()
     {
@@ -88,5 +86,18 @@ public abstract class UIBase2D : GameWindowBase, IWindowBase {
                 canvas.sortingOrder = depth;
             }
         }
+    }
+
+    private void AddAutoReleaseTimer()
+    {
+        if(m_autoRelease && m_timer == 0)
+        {
+            TimerManager.Instance.AddTimer(m_releaseTime, Release);
+        }
+    }
+
+    private void Release()
+    {
+        UGUIManager.Instance.ReleaseWindow(GetUIType());
     }
 }
