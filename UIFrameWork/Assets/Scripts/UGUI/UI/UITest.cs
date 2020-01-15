@@ -35,6 +35,8 @@ public class UITest : UIBase2D {
         m_ReturnBtn.onClick.AddListener(ClickClose);
         m_openBtn.onClick.AddListener(OpenWindow1);
         m_closeBtn.onClick.AddListener(CloseWindow1);
+
+        MessageManager.Instance.AddListener(MESSAGE_TYPE.OPEN_TESTTHREE, OpenThreee);
     }
 
     public override void OnOpen()
@@ -52,6 +54,8 @@ public class UITest : UIBase2D {
     public override void OnRelease()
     {
         base.OnRelease();
+        MessageManager.Instance.RemoveListener(MESSAGE_TYPE.OPEN_TESTTHREE, OpenThreee);
+
     }
 
     public void ClickClose()
@@ -68,5 +72,14 @@ public class UITest : UIBase2D {
     public void CloseWindow1()
     {
         UGUIManager.Instance.Close(UGUI_TYPE.UITestTwo, true);
+    }
+
+    public void OpenThreee(Message msg)
+    {
+        int res = 0;
+        string name;
+        CommonNotify<int, string> message = (CommonNotify<int, string>)msg;
+        message.GetData(out res, out name);
+        Debug.LogError("message call back" + res +"name " + name);
     }
 }

@@ -15,8 +15,12 @@ public class AutoSortOrder : MonoBehaviour {
 
     private int m_order = 1;
     private Canvas m_selfCanvas = null;
-	// Use this for initialization
-	void Start () {
+    private void Awake()
+    {
+        MessageManager.Instance.AddListener(MESSAGE_TYPE.SORT_ORDER, RefreshOrder);
+    }
+    // Use this for initialization
+    void Start () {
 
         Debug.LogError("auto sort start");
 		if(!m_is3D)
@@ -72,4 +76,9 @@ public class AutoSortOrder : MonoBehaviour {
         }
     }
 
+    public void RefreshOrder(Message msg)
+    {
+        Debug.LogError("refresh order");
+        Sort();
+    }
 }

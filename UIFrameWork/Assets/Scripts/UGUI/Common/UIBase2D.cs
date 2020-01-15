@@ -85,8 +85,11 @@ public abstract class UIBase2D : GameWindowBase, IWindowBase {
         {
             SelfCanvas.sortingOrder = depth;
         }
+
+        ClientMessage.SendMessage(MESSAGE_TYPE.SORT_ORDER);
     }
 
+    
     private void SetCanvas()
     {
         

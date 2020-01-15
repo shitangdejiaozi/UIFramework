@@ -12,3 +12,9 @@ public enum UGUI_TYPE
     UIMain = _BEGIN + 4,
 
 }
+
+public enum MESSAGE_TYPE
+{
+    SORT_ORDER,
+    OPEN_TESTTHREE
+}

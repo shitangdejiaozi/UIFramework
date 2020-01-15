@@ -29,6 +29,12 @@ public class UITestThree : UIBase2D {
         m_closeBtn.onClick.AddListener(CloseBtn);
     }
 
+    public override void OnOpen()
+    {
+        base.OnOpen();
+        ClientMessage.SendMessage<int, string>(MESSAGE_TYPE.OPEN_TESTTHREE, 100, "haha");
+    }
+
     public void CloseBtn()
     {
         CloseSelf();
