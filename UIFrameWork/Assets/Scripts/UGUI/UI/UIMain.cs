@@ -15,8 +15,12 @@ public class UIMain : UIBase2D {
     private Button m_btn3;
     [ControlBinding]
     private Button m_btn4;
+    [ControlBinding]
+    private Transform m_effectTrans;
 
     #endregion
+
+
 
 
     public override UGUI_LAYER Getlayer()
@@ -39,6 +43,7 @@ public class UIMain : UIBase2D {
     public override void OnOpen()
     {
         base.OnOpen();
+        CommonFunc.GetUIEffect("UIEffect/Butterfly", m_btn1.transform, GetComponent<Canvas>(), 3, gameObject.layer);
     }
 
     public override void OnClose()

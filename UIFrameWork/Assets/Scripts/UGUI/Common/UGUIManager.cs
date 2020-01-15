@@ -57,6 +57,11 @@ public class UGUIManager : SingletonDontDestroy<UGUIManager> {
         }
     }
 
+    public Camera UICamera
+    {
+        get { return m_uiCamera; }
+    }
+
     public IWindowBase Open(UGUI_TYPE uiType, UGUI_TYPE parentUIType = UGUI_TYPE._BEGIN)
     {
         IWindowBase uiwindow; 
@@ -243,7 +248,7 @@ public class UGUIManager : SingletonDontDestroy<UGUIManager> {
                 UIBase2D uiwindow = window.Value as UIBase2D;
                 if(uiwindow.Getlayer() == UGUI_LAYER.ROOT)
                 {
-                    int layer = LayerMask.NameToLayer("HideUI");
+                    int layer = LayerMask.NameToLayer("UGUI");
                     CommonFunc.SetLayer(uiwindow.gameObject, layer);
                     uiwindow.gameObject.GetComponent<Canvas>().enabled = show;
                     uiwindow.gameObject.GetComponent<GraphicRaycaster>().enabled = show;

@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 224513278542167972}
   - component: {fileID: 222978408522338516}
   - component: {fileID: 114460918695673352}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   - component: {fileID: 224733323841468200}
   - component: {fileID: 222949935163252342}
   - component: {fileID: 114486046346734940}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 114402217462891646}
   - component: {fileID: 114554459308194698}
   - component: {fileID: 114328523195693418}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: UIMain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -75,7 +75,7 @@ GameObject:
   - component: {fileID: 222463393832360876}
   - component: {fileID: 114991691357150142}
   - component: {fileID: 114143666792849896}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Button (4)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -92,8 +92,24 @@ GameObject:
   - component: {fileID: 224890440463415560}
   - component: {fileID: 222036490013145590}
   - component: {fileID: 114177208347708670}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1256266109447372
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 224538936487975746}
+  - component: {fileID: 222707705674766640}
+  m_Layer: 8
+  m_Name: root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -109,7 +125,7 @@ GameObject:
   - component: {fileID: 224143824732698494}
   - component: {fileID: 222060639373549182}
   - component: {fileID: 114391264955560528}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -126,7 +142,7 @@ GameObject:
   - component: {fileID: 224475010697602076}
   - component: {fileID: 222785081129264408}
   - component: {fileID: 114398427478850640}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -144,7 +160,7 @@ GameObject:
   - component: {fileID: 222050759967453616}
   - component: {fileID: 114422750609159462}
   - component: {fileID: 114174804312285884}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Button (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -162,7 +178,7 @@ GameObject:
   - component: {fileID: 222363233043753304}
   - component: {fileID: 114507480178452806}
   - component: {fileID: 114287623909864544}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Button (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -180,7 +196,7 @@ GameObject:
   - component: {fileID: 222207708544797472}
   - component: {fileID: 114375469835614280}
   - component: {fileID: 114851461172553100}
-  m_Layer: 5
+  m_Layer: 8
   m_Name: Button (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -371,6 +387,10 @@ MonoBehaviour:
     type: Button
     targets:
     - {fileID: 114143666792849896}
+  - name: m_effectTrans
+    type: Transform
+    targets:
+    - {fileID: 224538936487975746}
   subUIItemDatas: []
   dataHasChanged: 1
 --- !u!114 &114375469835614280
@@ -721,6 +741,12 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1165240966238018}
+--- !u!222 &222707705674766640
+CanvasRenderer:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1256266109447372}
 --- !u!222 &222785081129264408
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -870,6 +896,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!224 &224538936487975746
+RectTransform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1256266109447372}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 224602068098654228}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224602068098654228
 RectTransform:
   m_ObjectHideFlags: 1
@@ -885,6 +929,7 @@ RectTransform:
   - {fileID: 224340984400614750}
   - {fileID: 224366223367455744}
   - {fileID: 224618643144879804}
+  - {fileID: 224538936487975746}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

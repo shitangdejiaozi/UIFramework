@@ -33,4 +33,27 @@ public static class CommonFunc  {
             }
         }
     }
+
+    public static GameObject GetUIEffect(string EffectName, Transform parent, Canvas canvas, int offsetOrder, LayerMask layer)
+    {
+        GameObject prefab = Resources.Load<GameObject>(EffectName);
+        if(prefab == null)
+        {
+            Debug.LogError("effect no exit" + EffectName);
+            return null;
+        }
+
+        GameObject go = GameObject.Instantiate(prefab, parent, false);
+        go.transform.localPosition = Vector3.zero;
+        go.transform.localScale = Vector3.one;
+
+        SetLayer(go, layer);
+        var autoSort = go.GetOrAddComponent<AutoSortOrder>();
+        if(autoSort != null)
+        {
+            autoSort.SetOrder(canvas, true, offsetOrder);
+
+        }
+        return go;
+    }
 }

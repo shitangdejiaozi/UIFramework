@@ -26,4 +26,14 @@ public static class UGUITools  {
         }
         return go;
     }
+
+    public static T GetOrAddComponent<T>(this GameObject obj) where T : Component
+    {
+        T component = obj.GetComponent<T>();
+        if(component == null)
+        {
+            return obj.AddComponent<T>();
+        }
+        return component;
+    }
 }

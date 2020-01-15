@@ -12,6 +12,7 @@ public abstract class UIBase2D : GameWindowBase, IWindowBase {
     private uint m_timer = 0;
     protected float m_releaseTime = 0.01f;
     public abstract UGUI_LAYER Getlayer(); //每个UI都要layer
+    protected Canvas SelfCanvas = null;
 
     public void Open()
     {
@@ -44,11 +45,18 @@ public abstract class UIBase2D : GameWindowBase, IWindowBase {
         UGUIManager.Instance.Close(GetUIType());
     }
 
+    public Canvas GetSelfCanvas()
+    {
+        return SelfCanvas;
+    }
+
     //抽象方法，必须实现
     public abstract UGUI_TYPE GetUIType();
 
     public virtual void Initialize()
     {
+        SelfCanvas = GetComponent<Canvas>();
+        SetCanvas();
 
     }
 
@@ -72,18 +80,25 @@ public abstract class UIBase2D : GameWindowBase, IWindowBase {
     /// </summary>
     /// <param name="depth"></param>
     public void SetUIDepth(int depth)
-    {
-        if(UIRootTrans ==null)
+    {  
+        if(SelfCanvas != null)
         {
-            UIRootTrans = transform;
+            SelfCanvas.sortingOrder = depth;
         }
-        if(UIRootTrans != null)
+    }
+
+    private void SetCanvas()
+    {
+        
+        if (SelfCanvas != null)
         {
-            Canvas canvas = UIRootTrans.GetComponent<Canvas>();
-            if(canvas != null)
+            SelfCanvas.additionalShaderChannels |= AdditionalCanvasShaderChannels.Normal;
+            SelfCanvas.additionalShaderChannels |= AdditionalCanvasShaderChannels.TexCoord1;
+            SelfCanvas.additionalShaderChannels |= AdditionalCanvasShaderChannels.Tangent;
+            SelfCanvas.renderMode = RenderMode.ScreenSpaceCamera; //应该放在初始化时
+            if (UGUIManager.Instance.UICamera != null)
             {
-                canvas.renderMode = RenderMode.ScreenSpaceCamera;
-                canvas.sortingOrder = depth;
+                SelfCanvas.worldCamera = UGUIManager.Instance.UICamera;
             }
         }
     }
