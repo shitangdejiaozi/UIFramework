@@ -16,5 +16,11 @@ public enum UGUI_TYPE
 public enum MESSAGE_TYPE
 {
     SORT_ORDER,
-    OPEN_TESTTHREE
+    OPEN_TESTTHREE,
+    REFRESH_UI,
+}
+
+public enum RefreshFuncType
+{
+    CommonJump,
 }

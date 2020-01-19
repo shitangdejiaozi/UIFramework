@@ -164,4 +164,27 @@ public class CommonNotify<T, U> : Message
         dataU = _dataU;
 
     }
+
+    
+}
+
+public class CommonUIRefresh : Message
+{
+    public UGUI_TYPE UIType;
+    private object[] m_data;
+    public RefreshFuncType function;
+    public override MESSAGE_TYPE GetMsgType()
+    {
+        return MESSAGE_TYPE.REFRESH_UI;
+    }
+
+    public void SetParam(params object[] args)
+    {
+        m_data = args;
+    }
+
+    public object[] GetParam()
+    {
+        return m_data;
+    }
 }

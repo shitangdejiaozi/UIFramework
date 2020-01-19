@@ -55,6 +55,12 @@ public class UGUIManager : SingletonDontDestroy<UGUIManager> {
             m_root2D = gameObject.AddChild<UIRoot2D>();
             m_root2D.Initialize();
         }
+        MessageManager.Instance.AddListener(MESSAGE_TYPE.REFRESH_UI, RefreshUI);
+    }
+
+    private void OnDestroy()
+    {
+        MessageManager.Instance.RemoveListener(MESSAGE_TYPE.REFRESH_UI, RefreshUI);
     }
 
     public Camera UICamera
@@ -278,5 +284,18 @@ public class UGUIManager : SingletonDontDestroy<UGUIManager> {
         }
         return false;
     }
-    
+
+    /// <summary>
+    /// 传递参数，刷新UI，为了通用性，在ugui中监听并处理，不用每个UI都监听
+    /// </summary>
+    /// <param name="msg"></param>
+    public void RefreshUI(Message msg)
+    {
+        CommonUIRefresh refresh = (CommonUIRefresh)msg;
+        var window = GetUI(refresh.UIType);
+        if(window != null)
+        {
+            window.Refresh(refresh.function, refresh.GetParam());
+        }
+    }
 }

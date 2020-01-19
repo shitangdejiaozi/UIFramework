@@ -29,6 +29,10 @@ public abstract class UIBase2D : GameWindowBase, IWindowBase {
         OnClose();
     }
 
+    public void Refresh(RefreshFuncType funcType, params object[] args)
+    {
+        OnRefresh(funcType, args);
+    }
 
     public bool Is3D()
     {
@@ -65,6 +69,10 @@ public abstract class UIBase2D : GameWindowBase, IWindowBase {
 
     }
 
+    public virtual void OnRefresh(RefreshFuncType funcType, params object[] args)
+    {
+
+    }
     public virtual void OnClose()
     {
 

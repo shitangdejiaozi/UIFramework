@@ -45,6 +45,13 @@ public class UITest : UIBase2D {
         Debug.LogError("open uitest");
     }
 
+    public override void OnRefresh(RefreshFuncType funcType, params object[] args)
+    {
+        base.OnRefresh(funcType, args);
+
+        Debug.LogError("param" + args[0] + ", " +args[1]);
+    }
+
     public override void OnClose()
     {
         base.OnClose();

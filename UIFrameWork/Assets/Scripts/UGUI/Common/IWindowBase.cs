@@ -18,6 +18,7 @@ public interface IWindowBase : IBindableUI{
 
     void Close();
 
+    void Refresh(RefreshFuncType funcType, params object[] args);
     bool Is3D();
 
     bool IsVisible();

@@ -54,6 +54,11 @@ public class UIMain : UIBase2D {
     public void ClickBtn1()
     {
         UGUIManager.Instance.Open(UGUI_TYPE.UITest);
+        CommonUIRefresh refresh = new CommonUIRefresh();
+        refresh.UIType = UGUI_TYPE.UITest;
+        refresh.function = RefreshFuncType.CommonJump;
+        refresh.SetParam(10, "haha");
+        MessageManager.Instance.SendMessage(refresh);
     }
     public void ClickBtn2()
     {

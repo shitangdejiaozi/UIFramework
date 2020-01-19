@@ -21,6 +21,10 @@ public class UIBase3D : GameWindowBase, IWindowBase{
 
     }
 
+    public void Refresh(RefreshFuncType funcType, params object[] args)
+    {
+
+    }
     public bool Is3D()
     {
         return true;

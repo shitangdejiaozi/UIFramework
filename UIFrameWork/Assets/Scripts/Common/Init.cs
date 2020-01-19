@@ -7,6 +7,7 @@ public class Init : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         UGUIManager.Instance.Open(UGUI_TYPE.UIMain);
+        gameObject.AddComponent<ReceiverManager>();
     }
 	
 	// Update is called once per frame
